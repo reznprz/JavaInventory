@@ -1,7 +1,6 @@
 package com.laxmi.inventory.management.inventory.controller;
 
 import com.laxmi.inventory.management.inventory.Entity.Category;
-import com.laxmi.inventory.management.inventory.Exception.ResourceNotFoundException;
 import com.laxmi.inventory.management.inventory.domain.CategoryDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,7 +22,7 @@ public class CategoryController {
         return categoryDomain.getAllCategory(pageable);
     }
 
-    @PostMapping("/category")
+    @PostMapping("/create")
     private Category createCategory(@RequestBody Category category){
         return categoryDomain.craeteCategory(category);
     }

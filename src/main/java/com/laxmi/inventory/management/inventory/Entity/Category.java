@@ -19,14 +19,14 @@ public class Category {
 
     @Id
     @Column(name = "category_id", nullable = false)
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "categoryName")
     private String categoryName;
 
+    @Column(name = "categoryDescription")
     private String categoryDescription;
 
-//    public Category(){
-//        super();
-//    }
+
 }

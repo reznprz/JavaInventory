@@ -1,11 +1,14 @@
 package com.laxmi.inventory.management.inventory.repositories;
 
 import com.laxmi.inventory.management.inventory.Entity.Product;
+import com.laxmi.inventory.management.inventory.Entity.Staff;
 import com.laxmi.inventory.management.inventory.Exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class ProductRepository {
@@ -17,7 +20,7 @@ public class ProductRepository {
     IProductRepository productRepository;
 
 
-    public Page<Product> getAllProdcutsByPostId(Long categoryId,
+    public Page<Product> getAllProdcutsByCategoryId(Long categoryId,
                                                 Pageable pageable) {
         return productRepository.findByCategoryId(categoryId, pageable);
     }
@@ -47,11 +50,29 @@ public class ProductRepository {
     }
 
 
-    public Boolean deleteProduct(Long categoryId,
+    public Boolean deleteProductByCategoryID(Long categoryId,
                                             Long productId) {
         return productRepository.findByIdAndCategoryId(productId, categoryId).map(product -> {
             productRepository.delete(product);
             return true;
         }).orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + productId + " and CategoryId " + categoryId));
+    }
+
+    public Boolean deleteProductById(Long id){
+
+        try{
+            productRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public List<Product> getAllProduct(){
+
+        List<Product> productList = productRepository.findAll();
+
+        return productList;
+
     }
 }
