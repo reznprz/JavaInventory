@@ -15,8 +15,8 @@ public class ProductDomain {
     @Autowired
     ProductRepository productRepository;
 
-    public Page<Product> getAllProdcutsByCategoryId(Long categoryId, Pageable pageable){
-        return productRepository.getAllProdcutsByCategoryId(categoryId,pageable);
+    public Page<Product> getAllProductsByCategoryId(Long categoryId, Pageable pageable){
+        return productRepository.getAllProductsByCategoryId(categoryId,pageable);
     }
 
     public Product createProduct(Long categogyId, Product product){
@@ -38,6 +38,10 @@ public class ProductDomain {
 
     public List<Product> getAllProduct(){
         return productRepository.getAllProduct();
+    }
+
+    public Boolean deleteByCategoryId(Long id){
+        return productRepository.deleteByCategoryId(id);
     }
 
 

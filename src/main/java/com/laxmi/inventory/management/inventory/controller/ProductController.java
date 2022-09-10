@@ -19,8 +19,8 @@ public class ProductController {
     ProductDomain productDomain;
 
     @GetMapping("/category/{categoryId}/products")
-    private Page<Product> getAllProdcutsByCategoryId(@PathVariable("categoryId") Long id, Pageable pageable) {
-        return productDomain.getAllProdcutsByCategoryId(id, pageable);
+    private Page<Product> getAllProductsByCategoryId(@PathVariable("categoryId") Long id, Pageable pageable) {
+        return productDomain.getAllProductsByCategoryId(id, pageable);
     }
 
     @PostMapping("/category/{categoryId}/products")
@@ -46,6 +46,11 @@ public class ProductController {
     @GetMapping("/allProducts")
     private ResponseEntity<List<Product>> getAllProducts(){
         return new ResponseEntity<>(productDomain.getAllProduct(),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/ByCategoryId/{id}")
+    private ResponseEntity<Boolean> deleteByCategoryId(@PathVariable("id") Long id){
+        return new ResponseEntity<>(productDomain.deleteByCategoryId(id), HttpStatus.OK);
     }
 
 }

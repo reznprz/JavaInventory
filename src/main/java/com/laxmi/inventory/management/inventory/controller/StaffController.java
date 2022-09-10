@@ -53,13 +53,8 @@ public class StaffController {
         product2.setProductDescription("Milk product");
         product2.setCategory(category);
 
-
-
-
         productRepository.save(product);
         productRepository.save(product2);
-
-
 
         return "Hello From Server";
     }
@@ -97,7 +92,6 @@ public class StaffController {
 
     @DeleteMapping("/{id}")
     private ResponseEntity<Boolean> deleteStaffById(@PathVariable("id") long id){
-
         try{
             boolean success = staffDomain.deleteStaffById(id);
 
