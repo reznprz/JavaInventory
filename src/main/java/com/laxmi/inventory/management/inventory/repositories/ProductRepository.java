@@ -43,8 +43,8 @@ public class ProductRepository {
         }
         return productRepository.findById(productId).map(product -> {
             product.setProductDescription(productRequested.getProductDescription());
-            product.setProductPrice(productRequested.getProductPrice());
-            product.setProductQuantity(productRequested.getProductQuantity());
+            product.setProductUnitPrice(productRequested.getProductUnitPrice());
+            product.setProductUnitQuantityStock(productRequested.getProductUnitQuantityStock());
             return productRepository.save(product);
         }).orElseThrow(() -> new ResourceNotFoundException("ProductId " + productRequested + "not found"));
     }

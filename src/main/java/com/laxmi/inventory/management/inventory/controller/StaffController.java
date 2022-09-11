@@ -40,16 +40,16 @@ public class StaffController {
         Product product = new Product();
         product.setId(1L);
         product.setProductName("Barfi");
-        product.setProductPrice(20);
-        product.setProductQuantity(5);
+        product.setProductUnitQuantityStock(20);
+        product.setProductUnitPrice(5);
         product.setProductDescription("Milk product");
         product.setCategory(category);
 
         Product product2 = new Product();
         product2.setId(2L);
         product2.setProductName("Lado");
-        product2.setProductPrice(10);
-        product2.setProductQuantity(4);
+        product2.setProductUnitQuantityStock(10);
+        product2.setProductUnitPrice(4);
         product2.setProductDescription("Milk product");
         product2.setCategory(category);
 

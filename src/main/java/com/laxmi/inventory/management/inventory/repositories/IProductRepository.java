@@ -19,7 +19,6 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByIdAndCategoryId(Long productId, Long categoryId);
     @Transactional
     void deleteByCategoryId(Long productId);
-
     @Modifying()
     @Query(value = "DELETE FROM product WHERE product_id= :productId", nativeQuery = true)
     void deleteProduct(@Param("productId") Long productId);

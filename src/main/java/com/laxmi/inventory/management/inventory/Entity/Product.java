@@ -32,11 +32,17 @@ public class Product {
     @Column(name = "productDescription")
     private String productDescription;
 
-    @Column(name = "productQuantity")
-    private int productQuantity;
+    @Column(name = "productUnitQuantityStock")
+    private int productUnitQuantityStock;
 
-    @Column(name = "productPrice")
-    private int productPrice;
+    @Column(name = "productUnitPrice")
+    private int productUnitPrice;
+
+    @Column(name = "sku")
+    private String sku;
+
+    @Column(name = "image_url")
+    private String image_url;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "category_id")
@@ -44,5 +50,10 @@ public class Product {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     Category category;
+
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "product")
+    PurchaseOrderLineItem purchaseOrderLineItem;
 
 }

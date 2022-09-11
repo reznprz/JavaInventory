@@ -19,12 +19,12 @@ public class ProductDomain {
         return productRepository.getAllProductsByCategoryId(categoryId,pageable);
     }
 
-    public Product createProduct(Long categogyId, Product product){
-        return productRepository.createProduct(categogyId,product);
+    public Product createProduct(Long categoryId, Product product){
+        return productRepository.createProduct(categoryId,product);
     }
 
-    public Product updateProduct(Long categorId, Long productId, Product product){
-        return productRepository.updateProduct(categorId,productId,product);
+    public Product updateProduct(Long categoryId, Long productId, Product product){
+        return productRepository.updateProduct(categoryId,productId,product);
     }
 
     public Boolean deleteProduct(Long categoryId,
