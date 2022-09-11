@@ -23,9 +23,9 @@ public class PurchaseOrderLineItemDomain {
 
     public List<OrderLineItem> getAllProductsByPurchaseOrderId(Long purchaseOrderId) {
 
-        List<PurchaseOrderLineItem> purchaseOrderLineItems =purchaseOrderLineItemRepository.getAllOrderLineItemByPurchaseOrderId(purchaseOrderId);
+        List<PurchaseOrderLineItem> purchaseOrderLineItems = purchaseOrderLineItemRepository.getAllOrderLineItemByPurchaseOrderId(purchaseOrderId);
         List<OrderLineItem> orderLineItemList = new ArrayList<>();
-        for(PurchaseOrderLineItem lineItemDetail : purchaseOrderLineItems){
+        for (PurchaseOrderLineItem lineItemDetail : purchaseOrderLineItems) {
             OrderLineItem item = new OrderLineItem();
             item.setItemQuantity(lineItemDetail.getItemQuantity());
             item.setItemName(lineItemDetail.getItemName());
@@ -40,14 +40,23 @@ public class PurchaseOrderLineItemDomain {
     }
 
     public PurchaseOrderLineItem createPOOrderLineItem(Long purchaseOrderId, Long productId,
-                                                       PurchaseOrderLineItem purchaseOrderLineItem) {
-        return purchaseOrderLineItemRepository.createPOOrderLineItem(purchaseOrderId, productId, purchaseOrderLineItem);
+                                                       PurchaseOrderLineItem purchaseOrderLineItem) throws Exception {
+        try {
+            return purchaseOrderLineItemRepository.createPOOrderLineItem(purchaseOrderId, productId, purchaseOrderLineItem);
+        } catch (Exception e) {
+
+            boolean delete = purchaseOrderRepository.deletePurchaseOrderById(purchaseOrderId);
+            if (!delete) {
+                throw new Exception("couldn't add PoOrderItem in table and couldn't delete purchaseID : " + purchaseOrderId);
+            }
+            throw new Exception("couldn't add PoOrderItem in table");
+        }
     }
 
     public OrderLineItem updatePOOrderLineItem(Long purchaseOrderId,
-                                                       Long poOrderLineItemId, PurchaseOrderLineItem poLineItemRequested) {
+                                               Long poOrderLineItemId, PurchaseOrderLineItem poLineItemRequested) {
         PurchaseOrderLineItem lineItemDetail =
-        purchaseOrderLineItemRepository.updatePOOrderLineItem(purchaseOrderId, poOrderLineItemId, poLineItemRequested);
+                purchaseOrderLineItemRepository.updatePOOrderLineItem(purchaseOrderId, poOrderLineItemId, poLineItemRequested);
         OrderLineItem item = new OrderLineItem();
         item.setItemQuantity(lineItemDetail.getItemQuantity());
         item.setItemName(lineItemDetail.getItemName());
@@ -63,7 +72,7 @@ public class PurchaseOrderLineItemDomain {
 
         List<PurchaseOrderLineItem> purchaseOrderLineItemList = purchaseOrderLineItemRepository.getAllPOOrderLineItem();
         List<OrderLineItem> orderLineItemList = new ArrayList<>();
-        for(PurchaseOrderLineItem lineItemDetail : purchaseOrderLineItemList){
+        for (PurchaseOrderLineItem lineItemDetail : purchaseOrderLineItemList) {
             OrderLineItem item = new OrderLineItem();
             item.setItemQuantity(lineItemDetail.getItemQuantity());
             item.setItemName(lineItemDetail.getItemName());

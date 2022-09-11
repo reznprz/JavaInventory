@@ -23,7 +23,7 @@ public class PurchaseOrderLineItemController {
     }
 
     @PostMapping("/create/{purchaseOrderId}/{productId}")
-    private PurchaseOrderLineItem createPOOrderLineItem(@PathVariable("purchaseOrderId") Long purchaseOrderId, @PathVariable("productId") Long productId, @RequestBody PurchaseOrderLineItem purchaseOrderLineItem) {
+    private PurchaseOrderLineItem createPOOrderLineItem(@PathVariable("purchaseOrderId") Long purchaseOrderId, @PathVariable("productId") Long productId, @RequestBody PurchaseOrderLineItem purchaseOrderLineItem) throws Exception {
         return poLineItemDomain.createPOOrderLineItem(purchaseOrderId, productId, purchaseOrderLineItem);
     }
 

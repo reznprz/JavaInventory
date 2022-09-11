@@ -1,6 +1,5 @@
 package com.laxmi.inventory.management.inventory.Model;
 
-import com.laxmi.inventory.management.inventory.Entity.PurchaseOrderLineItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

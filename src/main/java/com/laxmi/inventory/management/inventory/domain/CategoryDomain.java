@@ -17,7 +17,7 @@ public class CategoryDomain {
         return categoryRepository.getAllCategory(pageable);
     }
 
-    public Category craeteCategory(Category category){
+    public Category createCategory(Category category){
         return categoryRepository.createCategory(category);
     }
 
@@ -25,7 +25,7 @@ public class CategoryDomain {
         return categoryRepository.updateCategory(id,category);
     }
 
-    public Boolean deleteCategory(Long id){
-        return categoryRepository.deleteCategory(id);
+    public void deleteCategory(Long id){
+        categoryRepository.deleteCategory(id);
     }
 }

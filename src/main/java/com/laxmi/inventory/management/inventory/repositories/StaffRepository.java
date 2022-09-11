@@ -12,41 +12,34 @@ import java.util.Optional;
 public class StaffRepository {
 
     @Autowired
-    IstaffRepository staffRepository;
+    IStaffRepository staffRepository;
 
-    public Staff SaveStaff(Staff staff){
+    public Staff SaveStaff(Staff staff) {
 
-        Staff newStaff = staffRepository.save(Staff.builder().firstName(staff.getFirstName()).
+        return staffRepository.save(Staff.builder().firstName(staff.getFirstName()).
                 email(staff.getEmail()).
                 address(staff.getAddress()).
                 phoneNumber(staff.getPhoneNumber()).
                 lastName(staff.getLastName()).build());
-
-        return newStaff;
     }
 
-    public List<Staff> getAllStaff(){
+    public List<Staff> getAllStaff() {
 
-        List<Staff> staffList = staffRepository.findAll();
-
-        return staffList;
+        return staffRepository.findAll();
 
     }
 
-    public Staff getStaffById(long id){
+    public Staff getStaffById(long id) {
         Optional<Staff> staffObj = staffRepository.findById(id);
 
-        if(staffObj.isPresent()){
-            return staffObj.get();
-        }
-        return null;
+        return staffObj.orElse(null);
 
     }
 
-    public boolean deleteStaffById(long id){
+    public boolean deleteStaffById(long id) {
         Staff staff = getStaffById(id);
 
-        if(staff != null){
+        if (staff != null) {
             staffRepository.deleteById(id);
             return true;
         }
@@ -54,24 +47,23 @@ public class StaffRepository {
         return false;
     }
 
-    public boolean deleteAllStaffs(){
+    public boolean deleteAllStaffs() {
 
         try {
             staffRepository.deleteAll();
 
             return true;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public Staff updateStaff(long id, Staff staff){
+    public Staff updateStaff(long id, Staff staff) {
 
         //check if staff exists in database
         Staff staffObj = getStaffById(id);
 
-        if(staffObj != null) {
+        if (staffObj != null) {
             staffObj.setAddress(staff.getAddress());
             staffObj.setFirstName(staff.getFirstName());
             staffObj.setLastName(staff.getLastName());
@@ -85,8 +77,6 @@ public class StaffRepository {
         return null;
 
     }
-
-
 
 
 }

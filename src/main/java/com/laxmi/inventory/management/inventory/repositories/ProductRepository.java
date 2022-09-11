@@ -21,13 +21,13 @@ public class ProductRepository {
 
 
     public Page<Product> getAllProductsByCategoryId(Long categoryId,
-                                                Pageable pageable) {
+                                                    Pageable pageable) {
         return productRepository.findByCategoryId(categoryId, pageable);
     }
 
 
-    public Product createProduct( Long categoryId,
-                                  Product product) {
+    public Product createProduct(Long categoryId,
+                                 Product product) {
         return categoryRepository.findById(categoryId).map(category -> {
             product.setCategory(category);
             return productRepository.save(product);
@@ -36,9 +36,9 @@ public class ProductRepository {
 
 
     public Product updateProduct(Long categoryId,
-                                  Long productId,
+                                 Long productId,
                                  Product productRequested) {
-        if(!categoryRepository.existsById(categoryId)) {
+        if (!categoryRepository.existsById(categoryId)) {
             throw new ResourceNotFoundException("CategoryId " + categoryId + " not found");
         }
         return productRepository.findById(productId).map(product -> {
@@ -51,39 +51,35 @@ public class ProductRepository {
 
 
     public Boolean deleteProductByCategoryID(Long categoryId,
-                                            Long productId) {
-        Optional<Product> p = productRepository.findByIdAndCategoryId(productId, categoryId);
+                                             Long productId) {
         Optional<Product> pp = productRepository.findById(productId);
-        productRepository.delete(pp.get());
+        pp.ifPresent(product -> productRepository.delete(product));
         return productRepository.findByIdAndCategoryId(productId, categoryId).map(product -> {
             productRepository.delete(product);
             return true;
         }).orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + productId + " and CategoryId " + categoryId));
     }
 
-    public Boolean deleteProductById(Long id){
-        Product r = new Product();
-        try{
+    public Boolean deleteProductById(Long id) {
+        try {
             productRepository.deleteProduct(id);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public List<Product> getAllProduct(){
+    public List<Product> getAllProduct() {
 
-        List<Product> productList = productRepository.findAll();
-
-        return productList;
+        return productRepository.findAll();
 
     }
 
-    public Boolean deleteByCategoryId(Long id){
-        try{
+    public Boolean deleteByCategoryId(Long id) {
+        try {
             productRepository.deleteByCategoryId(id);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }

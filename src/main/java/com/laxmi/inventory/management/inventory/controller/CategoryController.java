@@ -24,7 +24,7 @@ public class CategoryController {
 
     @PostMapping("/create")
     private Category createCategory(@RequestBody Category category){
-        return categoryDomain.craeteCategory(category);
+        return categoryDomain.createCategory(category);
     }
 
     @PutMapping("/category/{id}")

@@ -1,6 +1,5 @@
 package com.laxmi.inventory.management.inventory.domain;
 
-import com.laxmi.inventory.management.inventory.Entity.Category;
 import com.laxmi.inventory.management.inventory.Entity.PurchaseOrder;
 import com.laxmi.inventory.management.inventory.repositories.PurchaseOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,8 @@ public class PurchaseOrderDomain {
         return purchaseOrderRepository.updatePurchaseOrder(id,purchaseOrder);
     }
 
-    public Boolean deletePurchaseOrder(Long id){
-        return purchaseOrderRepository.deletePurchaseOrder(id);
+    public void deletePurchaseOrder(Long id){
+        purchaseOrderRepository.deletePurchaseOrder(id);
     }
 
     public Boolean deletePurchaseOrderById(Long id){
