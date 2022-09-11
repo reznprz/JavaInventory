@@ -27,6 +27,7 @@ public class PurchaseOrderController {
     }
 
     @PutMapping("/update/{id}")
+
     private PurchaseOrder updateCategory(@PathVariable("id") Long id, @RequestBody PurchaseOrder purchaseOrder){
         return purchaseOrderDomain.updatePurchaseOrder(id,purchaseOrder);
     }
@@ -40,4 +41,9 @@ public class PurchaseOrderController {
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
     }
+    @DeleteMapping("/deleteByPoId/{id}")
+    public Boolean deletePurchaseOrderById(@PathVariable("id") Long id){
+        return purchaseOrderDomain.deletePurchaseOrderById(id);
+    }
+
 }

@@ -51,9 +51,9 @@ public class Product {
     @JsonIgnore
     Category category;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "product")
-    PurchaseOrderLineItem purchaseOrderLineItem;
+//    @OneToOne(fetch = FetchType.LAZY,
+//            cascade =  CascadeType.ALL,
+//            mappedBy = "product")
+//    PurchaseOrderLineItem purchaseOrderLineItem;
 
 }

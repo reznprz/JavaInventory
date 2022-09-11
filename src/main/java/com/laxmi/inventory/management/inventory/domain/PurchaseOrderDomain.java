@@ -29,4 +29,8 @@ public class PurchaseOrderDomain {
     public Boolean deletePurchaseOrder(Long id){
         return purchaseOrderRepository.deletePurchaseOrder(id);
     }
+
+    public Boolean deletePurchaseOrderById(Long id){
+        return purchaseOrderRepository.deletePurchaseOrderById(id);
+    }
 }

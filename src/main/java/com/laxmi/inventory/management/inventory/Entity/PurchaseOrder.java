@@ -22,7 +22,7 @@ public class PurchaseOrder {
     @Id
     @Column(name = "purchase_order_po_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private Long id;
 
     private float totalPrice;
 
@@ -39,7 +39,7 @@ public class PurchaseOrder {
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "staff_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OnDelete(action = OnDeleteAction.CASCADE)
+   // @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     Staff staff;
 

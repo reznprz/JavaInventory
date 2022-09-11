@@ -39,7 +39,6 @@ public class PurchaseOrderRepository {
             purchaseOrder1.setItemDiscount(purchaseOrder.getItemDiscount());
             purchaseOrder1.setTax(purchaseOrder.getTax());
             purchaseOrder1.setStatus(purchaseOrder.getStatus());
-            purchaseOrder1.setOrderId(purchaseOrder.getOrderId());
             purchaseOrder1.setTotalPrice(purchaseOrder.getTotalPrice());
             purchaseOrder1.setSubTotalPrice(purchaseOrder.getSubTotalPrice());
             return purchaseOrderRepo.save(purchaseOrder1);
@@ -51,5 +50,14 @@ public class PurchaseOrderRepository {
             purchaseOrderRepo.delete(purchaseOrder);
             return true;
         }).orElse(false);
+    }
+
+    public Boolean deletePurchaseOrderById(Long id){
+        try{
+            purchaseOrderRepo.deletePurchaseOrder(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }
