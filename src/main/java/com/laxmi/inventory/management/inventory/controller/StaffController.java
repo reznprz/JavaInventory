@@ -1,7 +1,5 @@
 package com.laxmi.inventory.management.inventory.controller;
 
-import com.laxmi.inventory.management.inventory.Entity.Category;
-import com.laxmi.inventory.management.inventory.Entity.Product;
 import com.laxmi.inventory.management.inventory.Entity.Staff;
 import com.laxmi.inventory.management.inventory.domain.StaffDomain;
 import com.laxmi.inventory.management.inventory.repositories.ICategoryRepository;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/staff")
 public class StaffController {
@@ -30,37 +28,38 @@ public class StaffController {
     @GetMapping("/hi")
     private String hi(){
 
-        Category category = new Category();
-        category.setCategoryDescription("Sweets Type");
-        category.setCategoryName("Sweets");
-        category.setId(1L);
-
-        categoryRepository.save(category);
-
-        Product product = new Product();
-        product.setId(1L);
-        product.setProductName("Barfi");
-        product.setProductUnitQuantityStock(20);
-        product.setProductUnitPrice(5);
-        product.setProductDescription("Milk product");
-        product.setCategory(category);
-
-        Product product2 = new Product();
-        product2.setId(2L);
-        product2.setProductName("Lado");
-        product2.setProductUnitQuantityStock(10);
-        product2.setProductUnitPrice(4);
-        product2.setProductDescription("Milk product");
-        product2.setCategory(category);
-
-        productRepository.save(product);
-        productRepository.save(product2);
+//        Category category = new Category();
+//        category.setCategoryDescription("Sweets Type");
+//        category.setCategoryName("Sweets");
+//        category.setId(1L);
+//
+//        categoryRepository.save(category);
+//
+//        Product product = new Product();
+//        product.setId(1L);
+//        product.setProductName("Barfi");
+//        product.setProductUnitQuantityStock(20);
+//        product.setProductUnitPrice(5);
+//        product.setProductDescription("Milk product");
+//        product.setCategory(category);
+//
+//        Product product2 = new Product();
+//        product2.setId(2L);
+//        product2.setProductName("Lado");
+//        product2.setProductUnitQuantityStock(10);
+//        product2.setProductUnitPrice(4);
+//        product2.setProductDescription("Milk product");
+//        product2.setCategory(category);
+//
+//        productRepository.save(product);
+//        productRepository.save(product2);
 
         return "Hello From Server";
     }
 
     @PostMapping("/create")
     private ResponseEntity<Staff> saveStaff(@RequestBody Staff staff){
+        System.out.println("Staff : " + staff.toString() );
         Staff newStaff = staffDomain.saveStaff(staff);
         return new ResponseEntity<>(newStaff, HttpStatus.OK);
     }
