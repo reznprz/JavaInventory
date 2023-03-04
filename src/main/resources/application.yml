@@ -15,6 +15,11 @@ spring:
 
 
 
+  mvc:
+    path match:
+      matching-strategy: ant-path-matcher
+
+
 
 
 
