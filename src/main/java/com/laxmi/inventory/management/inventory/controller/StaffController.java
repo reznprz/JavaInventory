@@ -1,6 +1,8 @@
 package com.laxmi.inventory.management.inventory.controller;
 
 import com.laxmi.inventory.management.inventory.Entity.Staff;
+import com.laxmi.inventory.management.inventory.Model.StaffInfo;
+import com.laxmi.inventory.management.inventory.Model.StaffInfoRes;
 import com.laxmi.inventory.management.inventory.domain.StaffDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -92,6 +94,19 @@ public class StaffController {
         }
 
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PostMapping("/validateStaff")
+    private StaffInfoRes validateStaff(@RequestBody StaffInfo staffInfo){
+        StaffInfoRes res = staffDomain.validateStaff(staffInfo);
+
+        return res;
+//        if (res != null) {
+//            return new ResponseEntity<>(res, HttpStatus.OK);
+//        }
+//
+//        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
     }
 
 }
