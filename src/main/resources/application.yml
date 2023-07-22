@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/laxmiinventory
+    url: jdbc:postgresql://localhost:5432/inventory
     username: postgres
     password: root
 
