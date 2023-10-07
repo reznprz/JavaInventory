@@ -22,10 +22,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "categoryName")
+    @Column(name = "category_name")
     private String categoryName;
 
-    @Column(name = "categoryDescription")
+    @Column(name = "category_description")
     private String categoryDescription;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")

@@ -22,6 +22,7 @@ com/laxmi/inventory/management/inventory/Entity/Category$CategoryBuilder.class
 com/laxmi/inventory/management/inventory/controller/StaffController.class
 com/laxmi/inventory/management/inventory/Entity/Staff.class
 com/laxmi/inventory/management/inventory/Entity/PurchaseOrderLineItem.class
+com/laxmi/inventory/management/inventory/config/SwaggerConfig.class
 com/laxmi/inventory/management/inventory/repositories/IPurchaseOrderLineItem.class
 com/laxmi/inventory/management/inventory/domain/CategoryDomain.class
 com/laxmi/inventory/management/inventory/Model/OrderLineItem.class
