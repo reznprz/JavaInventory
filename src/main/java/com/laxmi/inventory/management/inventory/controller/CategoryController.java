@@ -1,6 +1,7 @@
 package com.laxmi.inventory.management.inventory.controller;
 
 import com.laxmi.inventory.management.inventory.Entity.Category;
+import com.laxmi.inventory.management.inventory.Model.DBRow;
 import com.laxmi.inventory.management.inventory.domain.CategoryDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -19,6 +22,7 @@ public class CategoryController {
 
     @GetMapping("/allCategory")
     private Page<Category> getAllCategory(Pageable pageable){
+        List<DBRow> s =  categoryDomain.getAllUsers();
         return categoryDomain.getAllCategory(pageable);
     }
 

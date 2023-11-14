@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -50,20 +52,31 @@ public class DataSourceConfig {
     }
 
     // Secondary DataSource (JDBC Template)
-    @Bean
-    @ConfigurationProperties("spring.datasource.secondary")
-    public DataSourceProperties secondaryDataSourceProperties() {
-        return new DataSourceProperties();
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.secondary")
+//    public DataSourceProperties secondaryDataSourceProperties() {
+//        return new DataSourceProperties();
+//    }
+//
+//    @Bean(name = "secondaryDataSource")
+//    @ConfigurationProperties("spring.datasource.secondary.configuration")
+//    public DataSource secondaryDataSource() {
+//        return secondaryDataSourceProperties().initializeDataSourceBuilder().build();
+//    }
+//
+//    @Bean(name = "jdbcTemplate")
+//    public JdbcTemplate jdbcTemplate(@Qualifier("secondaryDataSource") DataSource dataSource) {
+//        return new JdbcTemplate(dataSource);
+//    }
+
+    @Bean(name = "jdbcSecondaryTemplate")
+    public NamedParameterJdbcTemplate jdbcSecondaryTemplate(@Qualifier(value = "secondaryDataSource") DataSource secondaryDataSource) {
+        return new NamedParameterJdbcTemplate(secondaryDataSource);
     }
 
     @Bean(name = "secondaryDataSource")
-    @ConfigurationProperties("spring.datasource.secondary.configuration")
-    public DataSource secondaryDataSource() {
-        return secondaryDataSourceProperties().initializeDataSourceBuilder().build();
-    }
+    @ConfigurationProperties(prefix = "spring.datasource.secondary")
+    public DataSource secondaryDataSource() {return DataSourceBuilder.create().build();}
 
-    @Bean(name = "jdbcTemplate")
-    public JdbcTemplate jdbcTemplate(@Qualifier("secondaryDataSource") DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
-    }
+
 }
