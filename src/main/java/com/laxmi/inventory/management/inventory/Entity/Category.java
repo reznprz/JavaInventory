@@ -18,8 +18,8 @@ import java.util.Set;
 public class Category {
 
     @Id
-    @Column(name = "category_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categoryId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "categoryName")

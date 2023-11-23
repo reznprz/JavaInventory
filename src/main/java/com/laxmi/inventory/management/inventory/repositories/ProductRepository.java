@@ -84,4 +84,9 @@ public class ProductRepository {
         }
     }
 
+    public boolean existsByProductName(String productName){
+        boolean exits = productRepository.existsByProductName(productName);
+        return  exits;
+    }
+
 }

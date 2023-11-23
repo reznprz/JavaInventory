@@ -1,7 +1,7 @@
 package com.laxmi.inventory.management.inventory.controller;
 
 import com.laxmi.inventory.management.inventory.Entity.PurchaseOrderLineItem;
-import com.laxmi.inventory.management.inventory.Model.CreatePurchaseOrderLineItemRequest;
+import com.laxmi.inventory.management.inventory.Model.controllerModels.CreatePurchaseOrderLineItemRequest;
 import com.laxmi.inventory.management.inventory.Model.OrderLineItem;
 import com.laxmi.inventory.management.inventory.domain.PurchaseOrderLineItemDomain;
 import org.springframework.beans.factory.annotation.Autowired;

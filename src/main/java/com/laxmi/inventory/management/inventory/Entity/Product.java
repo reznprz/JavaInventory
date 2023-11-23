@@ -22,8 +22,8 @@ import java.util.Set;
 public class Product {
 
     @Id
-    @Column(name = "product_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "productId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "productName")
@@ -45,7 +45,7 @@ public class Product {
     private String image_url;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
