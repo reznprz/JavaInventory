@@ -21,9 +21,9 @@ public class CategoryController {
     CategoryDomain categoryDomain;
 
     @GetMapping("/allCategory")
-    private Page<Category> getAllCategory(Pageable pageable){
+    private List<Category> getAllCategory(){
         List<DBRow> s =  categoryDomain.getAllUsers();
-        return categoryDomain.getAllCategory(pageable);
+        return categoryDomain.getAllCategory();
     }
 
     @PostMapping("/create")

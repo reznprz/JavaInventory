@@ -18,14 +18,14 @@ import java.util.Set;
 public class Category {
 
     @Id
-    @Column(name = "category_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categoryId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "category_name")
+    @Column(name = "categoryName")
     private String categoryName;
 
-    @Column(name = "category_description")
+    @Column(name = "categoryDescription")
     private String categoryDescription;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")

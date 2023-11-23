@@ -2,7 +2,7 @@ package com.laxmi.inventory.management.inventory.domain;
 
 import com.laxmi.inventory.management.inventory.Entity.PurchaseOrder;
 import com.laxmi.inventory.management.inventory.Entity.PurchaseOrderLineItem;
-import com.laxmi.inventory.management.inventory.Model.CreatePurchaseOrderLineItemRequest;
+import com.laxmi.inventory.management.inventory.Model.controllerModels.CreatePurchaseOrderLineItemRequest;
 import com.laxmi.inventory.management.inventory.Model.OrderLineItem;
 import com.laxmi.inventory.management.inventory.repositories.PurchaseOrderLineItemRepository;
 import com.laxmi.inventory.management.inventory.repositories.PurchaseOrderRepository;

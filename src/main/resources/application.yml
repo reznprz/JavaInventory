@@ -1,7 +1,7 @@
 spring:
   datasource:
     primary:
-      url: jdbc:postgresql://localhost:5432/inventory
+      jdbcUrl: jdbc:postgresql://localhost:5432/inventory
       username: postgres
       password: root
       driver-class-name: org.postgresql.Driver
@@ -12,19 +12,15 @@ spring:
       password:
       driver-class-name: com.mysql.cj.jdbc.Driver
 
-  jpa:
-   show-sql: true
-     ## Hibernate Properties
-    # The SQL dialect makes Hibernate generate better SQL for the chosen database
-   properties.hibernate.dialect : org.hibernate.dialect.PostgreSQLDialect
-    # Hibernate ddl auto (create, create-drop, validate, update)
-   hibernate.ddl-auto: update
-
   mvc:
-    path match:
-      matching-strategy: ant-path-matcher
+    path:
+      match:
+        matching-strategy: ant-path-matcher
 
 
-
-
-
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate: INFO
+      springframework: INFO

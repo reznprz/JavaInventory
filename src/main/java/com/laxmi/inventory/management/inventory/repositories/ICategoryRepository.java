@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EnableJpaRepositories
 public interface ICategoryRepository extends JpaRepository<Category, Long> {
+
+    boolean existsByCategoryName(String categoryName);
 }

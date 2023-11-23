@@ -44,6 +44,21 @@ public class ProductDomain {
         return productRepository.deleteByCategoryId(id);
     }
 
+    public void createProductIfNotExists(String productName, String productDescription,
+                                          String imageUrl, Integer unitPrice,
+                                          Integer quantityInStock, String sku, Long categoryId) {
+        if (!productRepository.existsByProductName(productName)) {
+            Product product = new Product();
+            product.setProductName(productName);
+            product.setProductDescription(productDescription);
+            product.setImage_url(imageUrl);
+            product.setProductUnitPrice(unitPrice);
+            product.setProductUnitQuantityStock(quantityInStock);
+            product.setSku(sku);
+            product.setId(categoryId);
+            productRepository.createProduct(categoryId, product);
+        }
+    }
 
 
 }

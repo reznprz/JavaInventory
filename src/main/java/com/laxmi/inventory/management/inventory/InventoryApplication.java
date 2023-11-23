@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.laxmi.inventory.management.inventory.repositories")
-@ConfigurationPropertiesScan
+//@EnableJpaRepositories
+//@ConfigurationPropertiesScan
 public class InventoryApplication {
 
 	public static void main(String[] args) {

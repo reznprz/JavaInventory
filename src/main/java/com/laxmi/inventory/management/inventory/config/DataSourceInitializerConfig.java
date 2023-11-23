@@ -10,7 +10,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import javax.sql.DataSource;
 
 @Configuration
-public class SecondaryDataSourceInitializerConfig {
+public class DataSourceInitializerConfig {
 
     @Bean
     public DataSourceInitializer dataSourceInitializer(@Qualifier("secondaryDataSource") DataSource dataSource) {
@@ -18,6 +18,17 @@ public class SecondaryDataSourceInitializerConfig {
         dataSourceInitializer.setDataSource(dataSource);
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
         databasePopulator.addScript(new ClassPathResource("schema.sql"));
+        dataSourceInitializer.setDatabasePopulator(databasePopulator);
+        dataSourceInitializer.setEnabled(true);
+        return dataSourceInitializer;
+    }
+
+    @Bean
+    public DataSourceInitializer jpaDataSourceInitializer(@Qualifier("primaryDataSource") DataSource dataSource) {
+        DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
+        dataSourceInitializer.setDataSource(dataSource);
+        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+        databasePopulator.addScript(new ClassPathResource("productData.sql"));
         dataSourceInitializer.setDatabasePopulator(databasePopulator);
         dataSourceInitializer.setEnabled(true);
         return dataSourceInitializer;
